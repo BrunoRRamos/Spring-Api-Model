@@ -1,11 +1,11 @@
-package spring.example.api.service;
+package spring.example.api.service.Cliente;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import spring.example.api.dto.ClienteDto;
-import spring.example.api.model.Cliente;
-import spring.example.api.repository.ClienteRepository;
+import spring.example.api.dto.Cliente.ClienteDto;
+import spring.example.api.model.Cliente.Cliente;
+import spring.example.api.repository.Cliente.ClienteRepository;
 import java.util.Collection;
 
 @Service

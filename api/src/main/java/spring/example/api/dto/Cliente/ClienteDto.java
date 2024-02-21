@@ -1,4 +1,4 @@
-package spring.example.api.dto;
+package spring.example.api.dto.Cliente;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Email;

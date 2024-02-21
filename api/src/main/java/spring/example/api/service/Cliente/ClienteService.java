@@ -1,7 +1,7 @@
-package spring.example.api.service;
+package spring.example.api.service.Cliente;
 
-import spring.example.api.dto.ClienteDto;
-import spring.example.api.model.Cliente;
+import spring.example.api.dto.Cliente.ClienteDto;
+import spring.example.api.model.Cliente.Cliente;
 
 import java.util.Collection;
 

@@ -1,4 +1,4 @@
-package spring.example.api.model;
+package spring.example.api.model.Cliente;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;

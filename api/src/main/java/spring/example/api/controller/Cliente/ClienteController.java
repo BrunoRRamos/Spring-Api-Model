@@ -1,4 +1,4 @@
-package spring.example.api.controller;
+package spring.example.api.controller.Cliente;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -8,9 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import spring.example.api.dto.ClienteDto;
-import spring.example.api.model.Cliente;
-import spring.example.api.service.ClienteServiceImp;
+import spring.example.api.dto.Cliente.ClienteDto;
+import spring.example.api.model.Cliente.Cliente;
+import spring.example.api.service.Cliente.ClienteService;
 
 import java.util.Collection;
 
@@ -19,7 +19,7 @@ import java.util.Collection;
 public class ClienteController {
 
     @Autowired
-    public ClienteServiceImp clienteServiceImp;
+    public ClienteService clienteServiceImp;
 
     @Autowired
     public ModelMapper modelMapper;
