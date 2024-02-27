@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @DisplayName("Classe de Teste Endereco")
 public class EnderecoV1RestControllerTest {
-    final String URL_TEMPLATE = "/v1/logradouros";
+    final String URL_TEMPLATE = "/logradouros";
     @Autowired
     MockMvc driver;
 
