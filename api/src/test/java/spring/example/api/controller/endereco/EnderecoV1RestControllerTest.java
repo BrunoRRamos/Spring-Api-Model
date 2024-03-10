@@ -47,7 +47,9 @@ public class EnderecoV1RestControllerTest {
 
     @Test
     @DisplayName("Criando endereço")
-    void testePostLogradouro() throws Exception{
+    void testePostEndereco() throws Exception{
+        //Arrange
+        //Act
         String resultadoSTR = driver.perform(MockMvcRequestBuilders.post(URL_TEMPLATE)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(objectMapper.writeValueAsString(enderecoPutPostDTO)))
@@ -56,7 +58,7 @@ public class EnderecoV1RestControllerTest {
                 .andReturn().getResponse().getContentAsString();
 
         Endereco enderecoResultado = objectMapper.readValue(resultadoSTR, Endereco.class);
-
+        //Equals
         assertNotNull(enderecoResultado.getId());
         assertEquals(enderecoPutPostDTO.getNome(), enderecoResultado.getNome());
         assertEquals(enderecoPutPostDTO.getCep(), enderecoResultado.getCep());
@@ -64,7 +66,8 @@ public class EnderecoV1RestControllerTest {
 
     @Test
     @DisplayName("Alterando endereço")
-    void testePutLogradouro() throws Exception{
+    void testePutEndereco() throws Exception{
+        //Arrange
         String resultadoSTR = driver.perform(MockMvcRequestBuilders.post(URL_TEMPLATE)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(objectMapper.writeValueAsString(enderecoPutPostDTO)))
@@ -80,7 +83,7 @@ public class EnderecoV1RestControllerTest {
                 .cidade("João Pessoa")
                 .numero(69)
                 .build();
-
+        //Act
         resultadoSTR = driver.perform(MockMvcRequestBuilders.put(URL_TEMPLATE + "/" + endereco.getId())
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(objectMapper.writeValueAsString(enderecoPutPostDTO)))
@@ -98,14 +101,15 @@ public class EnderecoV1RestControllerTest {
 
     @Test
     @DisplayName("Obtendo endereço por ID")
-    void testeGetOneLogradouro() throws Exception {
+    void testeGetOneEndereco() throws Exception {
+        //Arrange
         String criando = driver.perform(MockMvcRequestBuilders.post(URL_TEMPLATE)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(objectMapper.writeValueAsString(enderecoPutPostDTO)))
                 .andExpect(status().isCreated())
                 .andDo(print())
                 .andReturn().getResponse().getContentAsString();
-
+        //Act
         String logradouroResultado = driver.perform(get(URL_TEMPLATE + "/1")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(objectMapper.writeValueAsString(enderecoPutPostDTO)))
@@ -115,18 +119,20 @@ public class EnderecoV1RestControllerTest {
 
         Endereco endereco = objectMapper.readValue(logradouroResultado, Endereco.class);
 
-        assertEquals(endereco.getId(),1);
-
         ResultActions enderecoInexistente = driver.perform(get(URL_TEMPLATE + "/5")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(objectMapper.writeValueAsString(enderecoPutPostDTO)))
                 .andExpect(status().is(404));// Esperado que não encontre o endereço.
+        
+        //Equals
+        assertEquals(endereco.getId(),1);
+
 
     }
 
     @Test
     @DisplayName("Obtendo Todos os Enderecos")
-    void testePatchLogradouro() throws Exception{
+    void testePatchEndereco() throws Exception{
         //Arrange
         String endereco1 = driver.perform(MockMvcRequestBuilders.post(URL_TEMPLATE)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -166,7 +172,7 @@ public class EnderecoV1RestControllerTest {
 
     @Test
     @DisplayName("Quando excluímos um endereço salvo")
-    void quandoExcluimosClienteValido() throws Exception {
+    void quandoExcluimosEnderecoValido() throws Exception {
         // Arrange
         String resultadoSTR = driver.perform(MockMvcRequestBuilders.post(URL_TEMPLATE)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
